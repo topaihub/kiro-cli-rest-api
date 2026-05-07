@@ -1,0 +1,20 @@
+.{
+    .name = .kiro_cli_rest_api,
+    .version = "0.1.0",
+    .fingerprint = 0x43fd4a6a0f72c665,
+    .minimum_zig_version = "0.16.0",
+    .dependencies = .{
+        .@"zig-logging" = .{
+            .path = "../zig-logging",
+        },
+        .@"zig-release" = .{
+            .path = "../zig-release",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+        "README.md",
+    },
+}

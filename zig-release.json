@@ -1,0 +1,8 @@
+{
+  "tag_prefix": "v",
+  "changelog_file": "CHANGELOG.md",
+  "version_files": [
+    { "path": "build.zig.zon", "pattern": ".version = \"{{version}}\"" }
+  ],
+  "skip": { "changelog": false }
+}
