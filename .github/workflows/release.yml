@@ -14,14 +14,19 @@ jobs:
         include:
           - target: x86_64-linux
             artifact: kiro-cli-rest-api-linux-x86_64
+            bin: kiro-cli-rest-api
           - target: aarch64-linux
             artifact: kiro-cli-rest-api-linux-aarch64
+            bin: kiro-cli-rest-api
           - target: aarch64-macos
             artifact: kiro-cli-rest-api-macos-aarch64
+            bin: kiro-cli-rest-api
           - target: x86_64-macos
             artifact: kiro-cli-rest-api-macos-x86_64
+            bin: kiro-cli-rest-api
           - target: x86_64-windows
             artifact: kiro-cli-rest-api-windows-x86_64.exe
+            bin: kiro-cli-rest-api.exe
 
     steps:
       - uses: actions/checkout@v4
@@ -37,7 +42,7 @@ jobs:
       - name: Package binary
         run: |
           mkdir -p dist
-          cp zig-out/bin/kiro-cli-rest-api dist/${{ matrix.artifact }}
+          cp zig-out/bin/${{ matrix.bin }} dist/${{ matrix.artifact }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
