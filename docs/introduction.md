@@ -1,6 +1,6 @@
 # kiro-cli-rest-api
 
-将 [kiro-cli](https://github.com/anthropics/kiro-cli) 的能力通过 REST API 暴露出来的轻量级桥接服务。
+将 [kiro-cli](https://kiro.dev) 的能力通过 REST API 暴露出来的轻量级桥接服务。
 
 ## 它是什么
 

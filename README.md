@@ -1,6 +1,6 @@
 # kiro-cli-rest-api
 
-将 [kiro-cli](https://github.com/anthropics/kiro-cli) 的能力通过 REST API 暴露出来的轻量级桥接服务。基于 Zig 0.16.0 实现，单二进制，零外部依赖。
+将 [kiro-cli](https://kiro.dev) 的能力通过 REST API 暴露出来的轻量级桥接服务。基于 Zig 0.16.0 实现，单二进制，零外部依赖。
 
 ## 快速开始
 
