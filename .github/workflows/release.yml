@@ -20,6 +20,8 @@ jobs:
             artifact: kiro-cli-rest-api-macos-aarch64
           - target: x86_64-macos
             artifact: kiro-cli-rest-api-macos-x86_64
+          - target: x86_64-windows
+            artifact: kiro-cli-rest-api-windows-x86_64.exe
 
     steps:
       - uses: actions/checkout@v4
