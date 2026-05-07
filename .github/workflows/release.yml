@@ -8,25 +8,18 @@ on:
 jobs:
   build:
     name: Build (${{ matrix.target }})
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         include:
-          - os: ubuntu-latest
-            target: linux-x86_64
-            ext: ""
-          - os: ubuntu-latest
-            target: linux-aarch64
-            ext: ""
-          - os: macos-latest
-            target: macos-aarch64
-            ext: ""
-          - os: macos-latest
-            target: macos-x86_64
-            ext: ""
-          - os: windows-latest
-            target: windows-x86_64
-            ext: ".exe"
+          - target: x86_64-linux
+            artifact: kiro-cli-rest-api-linux-x86_64
+          - target: aarch64-linux
+            artifact: kiro-cli-rest-api-linux-aarch64
+          - target: aarch64-macos
+            artifact: kiro-cli-rest-api-macos-aarch64
+          - target: x86_64-macos
+            artifact: kiro-cli-rest-api-macos-x86_64
 
     steps:
       - uses: actions/checkout@v4
@@ -37,18 +30,17 @@ jobs:
           version: 0.16.0
 
       - name: Build ReleaseSmall
-        run: zig build -Doptimize=ReleaseSmall
+        run: zig build -Doptimize=ReleaseSmall -Dtarget=${{ matrix.target }}
 
       - name: Package binary
-        shell: bash
         run: |
           mkdir -p dist
-          cp zig-out/bin/kiro-cli-rest-api${{ matrix.ext }} dist/kiro-cli-rest-api-${{ matrix.target }}${{ matrix.ext }}
+          cp zig-out/bin/kiro-cli-rest-api dist/${{ matrix.artifact }}
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: kiro-cli-rest-api-${{ matrix.target }}
+          name: ${{ matrix.artifact }}
           path: dist/
 
   release:
